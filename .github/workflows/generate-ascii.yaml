@@ -1,0 +1,27 @@
+name: Workflow para gerar ASCII Artwork
+on: push
+jobs:
+  ascii_job:
+    runs_on: ubuntu-latest
+    steps:
+
+       - name: Faz o checkout do repo
+         uses: actions/checkout@v6
+
+       - name: Atualiza os repositórios do SO
+         run: sudo apt-get update -y
+        
+       - name: Instala o pacote do cowsay
+         run: sudo apt-get install cowsay -y
+
+       - name: Executa o comando cowsay com os parâmetros corretos
+         run: cowsay -f dragon "Run for cover... I am a DRAGON!!" >> dragon.txt
+
+       - name: Procura a string dragon dentro do arquivo 
+         run: grep -i dragon dragon.txt
+
+       - name: Lê o arquivo que foi criado
+         run: cat dragon.txt
+
+       - name: Lista os arquivos do repositório
+         run: ls

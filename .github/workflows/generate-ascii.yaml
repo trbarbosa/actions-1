@@ -9,7 +9,7 @@ jobs:
          uses: actions/checkout@v6
 
        - name: Executing Shell Script
-         run: bash shell-ascii.sh
+         run: bash shell.sh
 
        - name: Lista os arquivos do repositório
          run: ls

@@ -15,7 +15,7 @@ jobs:
          uses: actions/upload-artifact@v4
          with:
             name: dragon.txt
-            path: ~/dragon.txt
+            path: dragon.txt
 
   test_job_2:
     needs: build_job_1
@@ -38,7 +38,7 @@ jobs:
          uses: actions/download-artifact@v5
          with:
             name: dragon.txt
-            
+
        - name: Lendo o arquivo
          run: cat dragon.txt
 

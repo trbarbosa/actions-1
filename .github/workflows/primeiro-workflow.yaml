@@ -6,9 +6,14 @@ jobs:
         steps:
             - name: Checkout repo
               uses: actions/checkout@v6
-            - name: Seja bem vindo
-              run: echo "Meu primeiro workflow"
-            - name: Listar arquivos
-              run: ls 
-            - name: Ler um arquivo
-              run: cat /etc/passwd
+            - name: Múltiplos comandos
+              run: |
+                echo "Meu primeiro workflow"
+                ls -ltra
+                cat /etc/passwd
+            - name: Generate ASCII Artwork
+              run: cowsay -f dragon "Run for cover... I am a DRAGON!!" >> dragon.txt
+            #- name: Listar arquivos
+            #  run: ls 
+            #- name: Ler um arquivo
+            #  run: cat /etc/passwd

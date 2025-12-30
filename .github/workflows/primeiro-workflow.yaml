@@ -1,0 +1,12 @@
+name: Meu primeiro workflow
+on: push
+jobs:
+    primeiro_job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Seja bem vindo
+              run: echo "Meu primeiro workflow"
+            - name: Listar arquivos
+              run: ls 
+            - name: Ler um arquivo
+              run: cat /etc/passwd

@@ -11,15 +11,20 @@ jobs:
        - name: Executa o comando cowsay com os parâmetros corretos
          run: cowsay -f dragon "Run for cover... I am a DRAGON!!" >> dragon.txt
 
-       - name: Espera 30 segundos
-         run: sleep 30
+       - name: Fazendo upload do arquivo dragon.txt
+         uses: actions/upload-artifact@v4
+         with:
+            name: dragon.txt
+            path: ~/dragon.txt
 
   test_job_2:
     needs: build_job_1
     runs-on: ubuntu-latest
     steps:
-       - name: Espera 10 segundos
-         run: sleep 10
+       - name: Baixando o arquivo dragon.txt
+         uses: actions/download-artifact@v5
+         with:
+            name: dragon.txt
 
        - name: Procura a palavra dragon no arquivo criado
          run: grep -i dragon dragon.txt
@@ -28,6 +33,12 @@ jobs:
     needs: test_job_2
     runs-on: ubuntu-latest
     steps:
+
+       - name: Baixando o arquivo dragon.txt
+         uses: actions/download-artifact@v5
+         with:
+            name: dragon.txt
+            
        - name: Lendo o arquivo
          run: cat dragon.txt
 

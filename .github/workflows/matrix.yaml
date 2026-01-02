@@ -1,0 +1,15 @@
+name: Testando matrix na pipeline
+on: push
+jobs:
+    deploy:
+      strategy:
+        matrix:
+          os: [ubuntu-latest, ubuntu-22.04, windows-latest]
+          images: [hello-world, alpine]
+      runs-on: ${{ matrix.os }}
+      steps:
+        - name: Mostra detalhes do Docker
+          run: docker info
+        
+        - name: Executa imagem no ${{ matrix.os }}
+          run: docker run ${{ matrix.images }}

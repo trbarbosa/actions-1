@@ -21,5 +21,5 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-    - name: Fazendo a execução
-      run: echo "esse workflow/job/step é executado pelo evento: ${{ github.event_name }}"
+       - name: Fazendo a execução
+         run: ls /
